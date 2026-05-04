@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0D2B55">
+<title>TRUalert — Katie</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F0F4F8; min-height: 100vh; }
+
+  .header { background: #0D2B55; padding: 14px 18px 12px; display: flex; align-items: center; justify-content: space-between; }
+  .tru-logo { color: #00A99D; font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .tru-logo span { color: #fff; font-size: 12px; font-weight: 400; margin-left: 6px; }
+  .scan-time { color: #99BBCC; font-size: 11px; text-align: right; line-height: 1.6; }
+
+  .profile-card { background: #fff; margin: 16px; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.10); }
+  .profile-top { display: flex; align-items: center; padding: 20px; border-bottom: 1px solid #EEF2F6; }
+
+  .photo-empty { width: 104px; height: 104px; border-radius: 12px; border: 3px dashed #CCCCCC; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #F8F8F8; }
+  .photo-empty-icon { font-size: 36px; opacity: 0.25; }
+
+  .profile-info { margin-left: 14px; flex: 1; }
+  .profile-name { font-size: 26px; font-weight: 700; color: #0D2B55; line-height: 1.2; }
+  .profile-sub { font-size: 13px; color: #AAAAAA; margin-top: 6px; font-style: italic; }
+
+  /* EMPTY SECTIONS */
+  .empty-section { margin: 14px 16px 0; }
+  .empty-label { font-size: 11px; font-weight: 700; color: #BBBBBB; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+
+  .empty-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; min-height: 80px; border: 2px dashed #E8E8E8; }
+  .empty-text { font-size: 14px; color: #CCCCCC; font-style: italic; text-align: center; line-height: 1.6; }
+
+  .empty-contact { background: #F8F8F8; border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; min-height: 72px; border: 2px dashed #E0E0E0; }
+  .empty-contact-text { font-size: 13px; color: #CCCCCC; font-style: italic; }
+  .empty-btn { background: #E8E8E8; color: #BBBBBB; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 8px; }
+
+  /* THE MESSAGE */
+  .message-card { background: #0D2B55; margin: 20px 16px 0; border-radius: 16px; padding: 28px 24px; text-align: center; }
+  .message-tru { color: #00A99D; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  .message-headline { color: #FFFFFF; font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
+  .message-headline .tru-word { color: #00A99D; }
+  .message-sub { color: #8BAAC0; font-size: 14px; line-height: 1.7; }
+
+  /* ACCESS LEVELS - all locked, all gray */
+  .locked-section { margin: 14px 16px 0; }
+  .access-level { background: #fff; border-radius: 12px; padding: 13px 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); display: flex; align-items: center; opacity: 0.35; }
+  .access-level + .access-level { margin-top: 8px; }
+  .access-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-right: 12px; background: #E0E0E0; color: #999; }
+  .access-level-text strong { display: block; font-size: 13px; font-weight: 700; color: #AAAAAA; }
+  .access-level-text span { font-size: 11px; color: #CCCCCC; }
+  .lock-icon { font-size: 16px; margin-left: auto; }
+
+  .footer { text-align: center; padding: 24px 14px 40px; }
+  .footer-logo { color: #00A99D; font-size: 18px; font-weight: 700; letter-spacing: 1px; }
+  .footer-tagline { font-size: 11px; color: #A0AEC0; margin-top: 4px; }
+  .footer-patent { font-size: 10px; color: #CBD5E0; margin-top: 5px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="tru-logo">TRUalert<span>Emergency Profile</span></div>
+  <div class="scan-time" id="scantime"></div>
+</div>
+
+<!-- PROFILE - NAME ONLY -->
+<div class="profile-card">
+  <div class="profile-top">
+    <div class="photo-empty">
+      <div class="photo-empty-icon">👤</div>
+    </div>
+    <div class="profile-info">
+      <div class="profile-name">Katie</div>
+      <div class="profile-age">Age 14</div>
+      <div class="profile-sub">No information on file</div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPTY CONDITIONS -->
+<div class="empty-section">
+  <div class="empty-label">Active Conditions</div>
+  <div class="empty-card">
+    <div class="empty-text">No conditions have been entered.<br>We don't know how to help Katie.</div>
+  </div>
+</div>
+
+<!-- EMPTY DEVICES -->
+<div class="empty-section">
+  <div class="empty-label">Devices</div>
+  <div class="empty-card">
+    <div class="empty-text">No devices on file.</div>
+  </div>
+</div>
+
+<!-- EMPTY APPROACH -->
+<div class="empty-section">
+  <div class="empty-label">Approach Instructions</div>
+  <div class="empty-card">
+    <div class="empty-text">No approach instructions have been entered.<br>We don't know what Katie needs.</div>
+  </div>
+</div>
+
+<!-- EMPTY CONTACTS -->
+<div class="empty-section">
+  <div class="empty-label">Emergency Contacts</div>
+  <div class="empty-contact">
+    <div class="empty-contact-text">No emergency contacts on file.</div>
+    <div class="empty-btn">No Contact</div>
+  </div>
+</div>
+
+<!-- THE MESSAGE -->
+<div class="message-card">
+  <div class="message-tru">TRU Platform</div>
+  <div class="message-headline">
+    We <span class="tru-word">TRU</span>ely want to help.<br>
+    But right now...<br>
+    we don't know how.
+  </div>
+  <div class="message-sub">
+    This is what every unregistered profile looks like.<br>
+    A name. And silence.<br><br>
+    Katie deserves more than silence.
+  </div>
+</div>
+
+<!-- ALL LOCKED -->
+<div class="locked-section">
+  <div class="access-level">
+    <div class="access-badge">Public Info</div>
+    <div class="access-level-text">
+      <strong>Not set up</strong>
+      <span>No information available</span>
+    </div>
+    <div class="lock-icon">🔒</div>
+  </div>
+  <div class="access-level">
+    <div class="access-badge">Trusted Circle</div>
+    <div class="access-level-text">
+      <strong>Not set up</strong>
+      <span>No trusted contacts registered</span>
+    </div>
+    <div class="lock-icon">🔒</div>
+  </div>
+  <div class="access-level">
+    <div class="access-badge">Responder Access</div>
+    <div class="access-level-text">
+      <strong>Not set up</strong>
+      <span>No responder data available</span>
+    </div>
+    <div class="lock-icon">🔒</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-logo">TRU Platform</div>
+  <div class="footer-tagline">We Are People, Not Products.</div>
+  <div class="footer-patent">USPTO Patent Pending · App. 64/032,493 & 64/046,274</div>
+</div>
+
+<script>
+  const now = new Date();
+  document.getElementById('scantime').innerHTML =
+    'Scanned<br>' +
+    now.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) +
+    '<br>' + now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+</script>
+</body>
+</html>
